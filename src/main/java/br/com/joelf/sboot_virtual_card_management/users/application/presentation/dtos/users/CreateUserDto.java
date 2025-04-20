@@ -2,12 +2,14 @@ package br.com.joelf.sboot_virtual_card_management.users.application.presentatio
 
 import br.com.joelf.sboot_virtual_card_management.users.domain.entities.User;
 import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 public record CreateUserDto(
         @NotBlank(message = "'name' attribute must not be blank.")
         @Size(min = 3, max = 255, message = "'name' attribute must have a minimum of 3 characters and max of 255.")
         String name,
 
+        @CPF(message = "'cpf is not valid.")
         @NotBlank(message = "'cpf' attribute must not be blank.")
         @Size(min = 11, max = 11, message = "'cpf' attribute must have 11 characters.")
         String cpf,
