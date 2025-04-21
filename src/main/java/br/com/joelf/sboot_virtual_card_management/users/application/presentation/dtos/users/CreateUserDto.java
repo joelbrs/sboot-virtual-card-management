@@ -9,7 +9,7 @@ public record CreateUserDto(
         @Size(min = 3, max = 255, message = "'name' attribute must have a minimum of 3 characters and max of 255.")
         String name,
 
-        @CPF(message = "'cpf is not valid.")
+        @CPF(message = "'cpf' is not valid.")
         @NotBlank(message = "'cpf' attribute must not be blank.")
         @Size(min = 11, max = 11, message = "'cpf' attribute must have 11 characters.")
         String cpf,
