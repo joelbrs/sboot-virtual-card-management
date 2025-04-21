@@ -4,8 +4,8 @@ import br.com.joelf.sboot_virtual_card_management.users.domain.service.Encryptio
 
 public class EncryptionServiceFactory {
     public static EncryptionService create(
-            String encryptionAlgorithm
+            String algorithm
     ) {
-        return new EncryptionService(encryptionAlgorithm);
+        return new EncryptionService(algorithm);
     }
 }

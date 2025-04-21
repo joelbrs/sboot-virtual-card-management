@@ -10,11 +10,11 @@ import java.security.NoSuchAlgorithmException;
 @RequiredArgsConstructor
 public class EncryptionService {
 
-    private final String encryptAlgorithm;
+    private final String algorithm;
 
     public String encrypt(String password) {
         try {
-            MessageDigest digest = MessageDigest.getInstance(encryptAlgorithm);
+            MessageDigest digest = MessageDigest.getInstance(algorithm);
             byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             return this.bytesToHex(hash);
         } catch (NoSuchAlgorithmException e) {
