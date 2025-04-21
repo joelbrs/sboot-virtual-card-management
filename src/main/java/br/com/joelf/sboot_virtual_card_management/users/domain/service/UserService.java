@@ -12,6 +12,7 @@ import java.util.UUID;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final EncryptionService encryptionService;
 
     private final BigDecimal minCreditLimit;
     private final BigDecimal maxCreditLimit;
@@ -23,6 +24,7 @@ public class UserService {
         BigDecimal creditLimit =
                 minCreditLimit.add(BigDecimal.valueOf(random.nextDouble() * maxCreditLimit.subtract(minCreditLimit).doubleValue()));
         user.setCreditLimit(creditLimit);
+        user.setPassword(encryptionService.encrypt(user.getPassword()));
         return userRepository.create(user);
     }
 }

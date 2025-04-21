@@ -1,6 +1,8 @@
 package br.com.joelf.sboot_virtual_card_management.users.application.presentation.exception.handlers;
 
+import br.com.joelf.sboot_virtual_card_management.users.application.presentation.exception.models.ResponseException;
 import br.com.joelf.sboot_virtual_card_management.users.application.presentation.exception.models.ValidationException;
+import br.com.joelf.sboot_virtual_card_management.users.domain.exception.EncryptionException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -13,6 +15,18 @@ import java.time.Instant;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
+
+    @ExceptionHandler(EncryptionException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseException handleEncryptionException(
+            HttpServletRequest request,
+            EncryptionException e
+    ) {
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        String message = "Encryption Failed: " + e.getMessage();
+
+        return new ResponseException(Instant.now(), status.value(), message, request.getRequestURI());
+    }
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)

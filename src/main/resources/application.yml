@@ -20,6 +20,8 @@ app:
   credit:
     min-limit: 250
     max-limit: 10000
+  encryption:
+    algorithm: SHA3-256
 
 server:
   port: 8080
