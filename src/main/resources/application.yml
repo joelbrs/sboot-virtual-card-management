@@ -20,8 +20,15 @@ app:
   credit:
     min-limit: 250
     max-limit: 10000
-  encryption:
+  card:
+    number-prefix: 8080
+    expiration-offset: 6
+  hash:
     algorithm: SHA3-256
+  encryption:
+    algorithm: AES
+    secret-key: 123456789
+
 
 server:
   port: 8080

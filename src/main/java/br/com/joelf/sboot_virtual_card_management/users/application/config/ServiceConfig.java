@@ -16,9 +16,9 @@ public class ServiceConfig {
 
     @Bean
     public EncryptionService encryptionService(
-            @Value("${app.encryption.algorithm}") String encryptionAlgorithm
+            @Value("${app.hash.algorithm}") String algorithm
     ) {
-        return EncryptionServiceFactory.create(encryptionAlgorithm);
+        return EncryptionServiceFactory.create(algorithm);
     }
 
     @Bean
