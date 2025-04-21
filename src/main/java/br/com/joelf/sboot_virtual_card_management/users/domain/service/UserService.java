@@ -19,6 +19,7 @@ public class UserService {
     public UUID create(User user) {
         Random random = new Random();
 
+        //TODO: create a mock service to verify user's credit and calculate credit limit properly
         BigDecimal creditLimit =
                 minCreditLimit.add(BigDecimal.valueOf(random.nextDouble() * maxCreditLimit.subtract(minCreditLimit).doubleValue()));
         user.setCreditLimit(creditLimit);
