@@ -16,5 +16,10 @@ spring:
     init:
       mode: always
 
+app:
+  credit:
+    min-limit: 250
+    max-limit: 10000
+
 server:
   port: 8080
