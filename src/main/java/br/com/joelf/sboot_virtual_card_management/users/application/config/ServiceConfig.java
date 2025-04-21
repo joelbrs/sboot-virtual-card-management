@@ -1,5 +1,6 @@
 package br.com.joelf.sboot_virtual_card_management.users.application.config;
 
+import br.com.joelf.sboot_virtual_card_management.users.domain.factories.UserServiceFactory;
 import br.com.joelf.sboot_virtual_card_management.users.domain.port.UserRepository;
 import br.com.joelf.sboot_virtual_card_management.users.domain.service.EncryptionService;
 import br.com.joelf.sboot_virtual_card_management.users.domain.service.UserService;
@@ -26,6 +27,6 @@ public class ServiceConfig {
             @Value("${app.credit.min-limit}") BigDecimal minCreditLimit,
             @Value("${app.credit.max-limit}") BigDecimal maxCreditLimit
     ) {
-        return new UserService(userRepository, encryptionService, minCreditLimit, maxCreditLimit);
+        return UserServiceFactory.create(userRepository, encryptionService, minCreditLimit, maxCreditLimit);
     }
 }

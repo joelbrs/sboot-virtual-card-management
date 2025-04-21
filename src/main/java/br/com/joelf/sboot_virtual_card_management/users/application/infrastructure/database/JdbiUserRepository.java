@@ -5,6 +5,7 @@ import br.com.joelf.sboot_virtual_card_management.users.domain.port.UserReposito
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.locator.UseClasspathSqlLocator;
 import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
+import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 import java.util.UUID;
@@ -16,4 +17,8 @@ public interface JdbiUserRepository extends UserRepository {
     @SqlUpdate
     @GetGeneratedKeys
     UUID create(@BindBean User user);
+
+    @Override
+    @SqlQuery
+    boolean exists(String cpf, String email);
 }

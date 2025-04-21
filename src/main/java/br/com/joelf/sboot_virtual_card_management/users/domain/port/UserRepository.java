@@ -6,4 +6,5 @@ import java.util.UUID;
 
 public interface UserRepository {
     UUID create(User user);
+    boolean exists(String cpf, String email);
 }
