@@ -15,7 +15,7 @@ public class VirtualCardService {
     private final EncryptionService encryptionService;
 
     private final String cardNumberPrefix;
-    private final String cardExpirationOffset;
+    private final Integer cardExpirationOffset;
 
     public VirtualCard create(VirtualCard virtualCard) {
         //TODO: validate user's total limit available
@@ -25,7 +25,7 @@ public class VirtualCardService {
 
         virtualCard.setCardNumber(this.getRandomCardNumber());
         virtualCard.setCvv(encryptionService.encrypt(cvv));
-        virtualCard.setExpirationDate(LocalDate.now().plusMonths(Integer.parseInt(cardExpirationOffset)));
+        virtualCard.setExpirationDate(LocalDate.now().plusMonths(cardExpirationOffset));
         virtualCard.setStatus(VirtualCardStatus.ACTIVE);
         return virtualCardRepository.create(virtualCard);
     }

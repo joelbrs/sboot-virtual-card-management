@@ -25,7 +25,7 @@ public class ServiceConfig {
             VirtualCardRepository virtualCardRepository,
             EncryptionService encryptionService,
             @Value("${app.card.number-prefix}") String cardNumberPrefix,
-            @Value("${app.card.expiration-offset}") String cardExpirationOffset
+            @Value("${app.card.expiration-offset}") Integer cardExpirationOffset
     ) {
         return VirtualCardServiceFactory.create(virtualCardRepository, encryptionService, cardNumberPrefix, cardExpirationOffset);
     }

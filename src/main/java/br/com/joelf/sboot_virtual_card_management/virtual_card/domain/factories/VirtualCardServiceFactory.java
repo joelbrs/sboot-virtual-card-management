@@ -9,7 +9,7 @@ public class VirtualCardServiceFactory {
             VirtualCardRepository virtualCardRepository,
             EncryptionService encryptionService,
             String cardNumberPrefix,
-            String cardExpirationOffset
+            Integer cardExpirationOffset
     ) {
         return new VirtualCardService(virtualCardRepository, encryptionService, cardNumberPrefix, cardExpirationOffset);
     }
